@@ -4,7 +4,7 @@ set -e
 
 boulder_ip="$(ifconfig docker0 | grep "inet addr:" | cut -d: -f2 | awk '{ print $1}')"
 
-# shellcheck source=test-functions.sh
+# shellcheck source=demo-functions.sh
 source ${TRAVIS_BUILD_DIR}/tests/test-functions.sh
 
 echo "Starting $LETSENCRYPT_CONTAINER_NAME container."
@@ -23,7 +23,7 @@ case $1 in
     exit 1
 esac
 
-echo "Starting test web server for ${TEST_DOMAINS}."
+echo "Starting demo web server for ${TEST_DOMAINS}."
 
 docker run -d \
   --name webapp-test \

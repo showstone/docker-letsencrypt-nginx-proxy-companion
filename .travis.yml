@@ -32,7 +32,7 @@ install:
   - docker build -t "$IMAGE" .
   - docker inspect "$IMAGE"
   - docker run --rm "$IMAGE" simp_le --version
-  - docker run --rm "$IMAGE" simp_le -v --test
+  - docker run --rm "$IMAGE" simp_le -v --demo
   - docker images
 
 before_script:
@@ -41,8 +41,8 @@ before_script:
   - tests/setup-nginx-proxy.sh $SETUP
 
 script:
-  - official-images/test/run.sh "$IMAGE"
-  - tests/test.sh $SETUP
+  - official-images/demo/run.sh "$IMAGE"
+  - tests/demo.sh $SETUP
 
 after_failure:
   - tests/after-failure.sh $SETUP
